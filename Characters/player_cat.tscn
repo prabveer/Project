@@ -1,0 +1,477 @@
+[gd_scene load_steps=38 format=3 uid="uid://50gosd62bh5f"]
+
+[ext_resource type="Script" path="res://Characters/player_cat.gd" id="1_euua5"]
+[ext_resource type="Texture2D" uid="uid://b88egg1wr8atq" path="res://art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_wylbe"]
+[ext_resource type="PackedScene" uid="uid://bhteaavyaoqk" path="res://Utility/hurtbox.tscn" id="3_v1n28"]
+[ext_resource type="Texture2D" uid="uid://dl1yiu47ob8u5" path="res://art/Sprout Lands - Sprites - Basic pack/Objects/exp_background.png" id="4_a5n3o"]
+[ext_resource type="Texture2D" uid="uid://xgrpt327huwq" path="res://art/Sprout Lands - Sprites - Basic pack/Objects/exp_progress.png" id="5_70pib"]
+[ext_resource type="Texture2D" uid="uid://kht5kdhjja4p" path="res://art/Sprout Lands - Sprites - Basic pack/Objects/healthbar.png" id="6_nnwbc"]
+[ext_resource type="Texture2D" uid="uid://c4hn3ur7yx4s8" path="res://art/Sprout Lands - Sprites - Basic pack/Objects/health.png" id="7_bx3md"]
+[ext_resource type="PackedScene" uid="uid://cie1w1xj3copi" path="res://Utility/basic_button.tscn" id="8_beohc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_abitc"]
+radius = 2.75
+height = 7.75
+
+[sub_resource type="Animation" id="Animation_6ni21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [14]
+}
+
+[sub_resource type="Animation" id="Animation_ytd8w"]
+resource_name = "idle_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_esni2"]
+resource_name = "idle_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_nq6jc"]
+resource_name = "idle_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_scubo"]
+resource_name = "idle_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_ulvyu"]
+resource_name = "walk_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_mdpn3"]
+resource_name = "walk_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_ydavq"]
+resource_name = "walk_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_u1v6n"]
+resource_name = "walk_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b1nmg"]
+_data = {
+"RESET": SubResource("Animation_6ni21"),
+"idle_down": SubResource("Animation_ytd8w"),
+"idle_left": SubResource("Animation_esni2"),
+"idle_right": SubResource("Animation_nq6jc"),
+"idle_up": SubResource("Animation_scubo"),
+"walk_down": SubResource("Animation_ulvyu"),
+"walk_left": SubResource("Animation_mdpn3"),
+"walk_right": SubResource("Animation_ydavq"),
+"walk_up": SubResource("Animation_u1v6n")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6m18q"]
+animation = &"idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lyjg5"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lnji5"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xad0j"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_sfsi5"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_6m18q")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_lyjg5")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_lnji5")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_xad0j")
+blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lj7ex"]
+animation = &"walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smgkl"]
+animation = &"walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s0uwj"]
+animation = &"walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dykyi"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ffck2"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_lj7ex")
+blend_point_0/pos = Vector2(0, 1.1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_smgkl")
+blend_point_1/pos = Vector2(0, -1.1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_s0uwj")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_dykyi")
+blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vnxgw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bj8mv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hxxxt"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6lt8n"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_sfsi5")
+states/Idle/position = Vector2(329.134, 100)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_ffck2")
+states/Walk/position = Vector2(452.134, 100)
+transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_vnxgw"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_bj8mv"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_hxxxt")]
+graph_offset = Vector2(-178.682, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06bir"]
+size = Vector2(6.5, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xeukm"]
+radius = 119.151
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p01tg"]
+radius = 30.14
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lci5d"]
+radius = 4.33
+
+[node name="PlayerCat" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_euua5")
+move_speed = 20.0
+metadata/_edit_horizontal_guides_ = [-7.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wylbe")
+hframes = 4
+vframes = 4
+frame = 14
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 0.125)
+shape = SubResource("CapsuleShape2D_abitc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b1nmg")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b1nmg")
+}
+tree_root = SubResource("AnimationNodeStateMachine_6lt8n")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = Vector2(0.051282, 0.052381)
+parameters/Walk/blend_position = Vector2(0.00569797, -1.00688)
+
+[node name="hurtbox" parent="." groups=["player"] instance=ExtResource("3_v1n28")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2(0.25, 0)
+shape = SubResource("RectangleShape2D_06bir")
+
+[node name="Attack" type="Node2D" parent="."]
+
+[node name="CarrotTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="CarrotAttackTimer" type="Timer" parent="Attack/CarrotTimer"]
+unique_name_in_owner = true
+wait_time = 0.075
+
+[node name="TornadoTimer" type="Timer" parent="Attack"]
+unique_name_in_owner = true
+wait_time = 3.0
+
+[node name="TornadoAttackTimer" type="Timer" parent="Attack/TornadoTimer"]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="javelinBase" type="Node2D" parent="Attack"]
+unique_name_in_owner = true
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_xeukm")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_p01tg")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_lci5d")
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="GUILayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 650.0
+
+[node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.0
+offset_right = 654.0
+offset_bottom = 20.0
+scale = Vector2(0.4, 0.4)
+texture_under = ExtResource("4_a5n3o")
+texture_progress = ExtResource("5_70pib")
+
+[node name="lbl_level" type="Label" parent="GUILayer/GUI/ExperienceBar"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 575.0
+offset_top = -2.0
+offset_right = 633.0
+offset_bottom = 21.0
+text = "Level: 1"
+
+[node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 136.0
+offset_top = 90.0
+offset_right = 168.0
+offset_bottom = 98.0
+scale = Vector2(0.5, 0.5)
+value = 50.0
+texture_over = ExtResource("6_nnwbc")
+texture_progress = ExtResource("7_bx3md")
+
+[node name="Levelup" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 300.0
+offset_top = 23.0
+offset_right = 405.0
+offset_bottom = 144.0
+
+[node name="lbl_levelUP" type="Label" parent="GUILayer/GUI/Levelup"]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+text = "Level Up !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOptions" type="VBoxContainer" parent="GUILayer/GUI/Levelup"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 7.0
+offset_top = 26.0
+offset_right = 97.0
+offset_bottom = 50.0
+
+[node name="snd_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/Levelup"]
+unique_name_in_owner = true
+
+[node name="DeathPanel" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+layout_mode = 0
+offset_left = 300.0
+offset_top = 23.0
+offset_right = 405.0
+offset_bottom = 144.0
+
+[node name="lbl_result" type="Label" parent="GUILayer/GUI/DeathPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 10
+text = "Result"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="snd_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/DeathPanel"]
+
+[node name="Button" parent="GUILayer/GUI/DeathPanel" instance=ExtResource("8_beohc")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 83.0
+offset_right = 89.0
+offset_bottom = 114.0
+text = "Menu"
+
+[node name="lblTimer" type="Label" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 239.0
+offset_top = 8.0
+offset_right = 270.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 12
+text = "00:00
+"
+
+[node name="CollectedWeapons" type="GridContainer" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 89.0
+offset_bottom = 15.0
+columns = 10
+
+[node name="CollectedUpgrades" type="GridContainer" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 14.0
+offset_top = 22.0
+offset_right = 89.0
+offset_bottom = 27.0
+columns = 10
+
+[connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="timeout" from="Attack/CarrotTimer" to="." method="_on_carrot_timer_timeout"]
+[connection signal="timeout" from="Attack/CarrotTimer/CarrotAttackTimer" to="." method="_on_carrot_attack_timer_timeout"]
+[connection signal="timeout" from="Attack/TornadoTimer" to="." method="_on_tornado_timer_timeout"]
+[connection signal="timeout" from="Attack/TornadoTimer/TornadoAttackTimer" to="." method="_on_tornado_attack_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+
+[editable path="hurtbox"]

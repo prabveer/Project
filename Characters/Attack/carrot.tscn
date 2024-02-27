@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cluau5vhgvnod"]
+
+[ext_resource type="Script" path="res://Characters/Attack/carrot.gd" id="1_m2fup"]
+[ext_resource type="Texture2D" uid="uid://byxuwy0iaf80q" path="res://art/Sprout Lands - Sprites - Basic pack/Objects/carrot.png" id="2_eltfu"]
+[ext_resource type="AudioStream" uid="uid://deq6dj2y1h40t" path="res://Audio/ice.wav" id="3_62ikc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ekkk"]
+size = Vector2(7.77817, 34.6482)
+
+[node name="Carrot" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_m2fup")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_eltfu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.5)
+rotation = -0.785398
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_0ekkk")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="snd_play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_62ikc")
+volume_db = -10.0
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

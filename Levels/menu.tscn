@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://bre5mejdfkoi4"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_gfduq"]
+[ext_resource type="PackedScene" uid="uid://cie1w1xj3copi" path="res://Utility/basic_button.tscn" id="2_8fvnf"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gfduq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 328.0
+offset_bottom = 243.0
+color = Color(0, 1, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 21.0
+offset_right = 213.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 25
+text = "Place Holder"
+
+[node name="Button_Play" parent="." instance=ExtResource("2_8fvnf")]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 68.0
+offset_right = 171.0
+offset_bottom = 99.0
+text = "Play"
+
+[node name="Button_Exit" parent="." instance=ExtResource("2_8fvnf")]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 114.0
+offset_right = 169.0
+offset_bottom = 145.0
+text = "Exit"
+
+[connection signal="button_up" from="Button_Play" to="." method="_on_button_play_button_up"]
+[connection signal="button_up" from="Button_Exit" to="." method="_on_button_exit_button_up"]

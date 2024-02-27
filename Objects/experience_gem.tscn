@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://xybrmkvlf8q4"]
+
+[ext_resource type="Texture2D" uid="uid://blau1ntbyq8fi" path="res://art/Sprout Lands - Sprites - Basic pack/Objects/Gem_green.png" id="1_000k2"]
+[ext_resource type="Script" path="res://Objects/experience_gem.gd" id="1_atmtg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkyew"]
+size = Vector2(10, 12)
+
+[node name="ExperienceGem" type="Area2D" groups=["loot"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_atmtg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_000k2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nkyew")
+
+[node name="snd_collect" type="AudioStreamPlayer" parent="."]
